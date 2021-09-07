@@ -26,30 +26,9 @@
             android:id="@+id/tvTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/problema_uno"
+            android:text="@string/problema_dos"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="32dp" />
-
-        <TextView
-            android:id="@+id/tvLatitud"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/latitud"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/etLatitud"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="numberDecimal"
-            android:minHeight="48dp"
-            tools:ignore="SpeakableTextPresentCheck" />
 
         <View
             android:id="@+id/divider3"
@@ -57,18 +36,39 @@
             android:layout_height="32dp" />
 
         <TextView
-            android:id="@+id/tvLongitud"
+            android:id="@+id/tvFechaInicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/longitud"
+            android:text="@string/fecha_inicio"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/etLongitud"
+            android:id="@+id/etFechaInicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="numberDecimal"
+            android:inputType="date"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <TextView
+            android:id="@+id/tvFechaFin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fecha_fin"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etFechaFin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
             android:minHeight="48dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -78,12 +78,11 @@
             android:layout_height="32dp" />
 
         <Button
-            android:id="@+id/btnMostrarClima"
+            android:id="@+id/btnMostrarDomingos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/mostrar_clima" />
+            android:text="@string/mostrar_domingos" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@
             android:id="@+id/tvTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/problema_uno"
+            android:text="@string/problema_tres"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -36,20 +36,20 @@
             android:layout_height="32dp" />
 
         <TextView
-            android:id="@+id/tvLatitud"
+            android:id="@+id/tvAñoInicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/latitud"
+            android:text="@string/a_o_inicio"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/etLatitud"
+            android:id="@+id/etAñoInicio"
+            tools:ignore="SpeakableTextPresentCheck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:minHeight="48dp"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:minHeight="48dp" />
 
         <View
             android:id="@+id/divider3"
@@ -57,20 +57,20 @@
             android:layout_height="32dp" />
 
         <TextView
-            android:id="@+id/tvLongitud"
+            android:id="@+id/tvAñoFin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/longitud"
+            android:text="@string/a_o_fin"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/etLongitud"
+            android:id="@+id/etAñoFin"
+            tools:ignore="SpeakableTextPresentCheck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:minHeight="48dp"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:minHeight="48dp" />
 
         <View
             android:id="@+id/divider4"
@@ -78,12 +78,11 @@
             android:layout_height="32dp" />
 
         <Button
-            android:id="@+id/btnMostrarClima"
+            android:id="@+id/btnMostrarAñoBisiesto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/mostrar_clima" />
+            android:text="@string/mostrar_a_os_bisiestos" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

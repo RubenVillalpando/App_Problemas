@@ -6,13 +6,113 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MAIN BINDING"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvTituloMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Problemas"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <View
+            android:id="@+id/divider15"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/btnProblemaUno"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/problema_uno" />
+
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/btnProblemaUno2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/problema_dos" />
+
+        <View
+            android:id="@+id/divider10"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/btnProblemaUno3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/problema_tres" />
+
+        <View
+            android:id="@+id/divider13"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/btnProblemaUno4"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/problema_cuatro" />
+
+        <View
+            android:id="@+id/divider12"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/btnProblemaUno5"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/problema_cinco" />
+
+        <View
+            android:id="@+id/divider11"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/btnProblemaUno6"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/problema_seis" />
+
+        <View
+            android:id="@+id/divider14"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/btnProblemaUno7"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/problema_siete" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

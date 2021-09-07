@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Problemas</string>
+    <string name="problema_uno">Problema Uno</string>
+    <string name="mostrar_clima">Mostrar clima</string>
+    <string name="latitud">Latitud:</string>
+    <string name="longitud">Longitud:</string>
+    <string name="problema_dos">Problema Dos</string>
+    <string name="mostrar_domingos">Mostrar Domingos</string>
+    <string name="fecha_inicio">Fecha inicio:</string>
+    <string name="fecha_fin">Fecha fin:</string>
+    <string name="problema_tres">Problema Tres</string>
+    <string name="a_o_fin">Año fin:</string>
+    <string name="a_o_inicio">Año inicio:</string>
+    <string name="mostrar_a_os_bisiestos">Mostrar Años Bisiestos</string>
+    <string name="problema_cuatro">Problema Cuatro</string>
+    <string name="tama_o_de_la_matriz">Tamaño de la matriz:</string>
+    <string name="rotaciones">Rotaciones:</string>
+    <string name="coordenadas">Coordenadas:</string>
+    <string name="mostrar_n_mero">Mostrar Número</string>
+    <string name="problema_cinco">Problema Cinco</string>
+    <string name="mostrar_repetici_n_de_caracteres">Mostrar Repetición de Caracteres</string>
+    <string name="texto">Texto:</string>
+    <string name="problema_seis">Problema Seis</string>
+    <string name="ruta">Ruta:</string>
+    <string name="mostrar_arbol">Mostrar Arbol</string>
+    <string name="problema_siete">Problema Siete</string>
+    <string name="mostrar_caminos">Mostrar Caminos</string>
 </resources>
