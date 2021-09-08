@@ -12,8 +12,14 @@ class ResolvedorVM: ViewModel() {
 
     private val resolvedor = Resolvedor()
 
+    var respuestaProblemaUno = MutableLiveData<String>("")
+    var respuestaProblemaDos = MutableLiveData<Int>(0)
+    var respuestaProblemaTres = MutableLiveData<String>("")
+    var respuestaProblemaCuatro = MutableLiveData<Int>(0)
+    var respuestaProblemaCinco = MutableLiveData<String>("")
+    var respuestaProblemaSeis = MutableLiveData<String>("")
+    var respuestaProblemaSiete = MutableLiveData<Int>(0)
 
-    var repeticionCaracteres = MutableLiveData<String>("")
 
 
     fun resolverProblema1(latitud: Double?, longitud: Double?){
@@ -22,37 +28,39 @@ class ResolvedorVM: ViewModel() {
 
 
     fun resolverProblema2(fechaInicio: Date, fechaFin: Date){
-        print(fechaInicio.toString())
-        print(fechaFin.toString())
-//        Calendar.DECEMBER.
+
     }
 
 
     fun resolverProblema3(anioInicio: Year, anioFin: Year){
-        print(anioInicio.toString())
-        print(anioFin.toString())
+
     }
 
 
     fun resolverProblema4(tamanioMatriz: Int, rotaciones: IntArray, coordenada: Pair<Int, Int>){
-
+        val r: Int = resolvedor.resolverCuartoProblema(tamanioMatriz, rotaciones, coordenada)
+        respuestaProblemaCuatro.value = r
     }
 
 
     fun resolverProblema5(texto: String){
-        var hm: HashMap<Char, Int> = resolvedor.resolverQuintoProblema(texto)
-        var str = StringBuilder()
-        var keysArr: CharArray = hm.keys.toCharArray()
+
+        val hm: HashMap<Char, Int> = resolvedor.resolverQuintoProblema(texto)
+
+        val str = StringBuilder()
+
+        val keysArr: CharArray = hm.keys.toCharArray()
         str.append(keysArr[0])
             .append(" = ")
             .append(hm.getValue(keysArr[0]))
+
         for (i in 1 until keysArr.size){
             str.append(", ")
                 .append(keysArr[i])
                 .append(" = ")
                 .append(hm.getValue(keysArr[i]))
         }
-        repeticionCaracteres.value = str.toString()
+        respuestaProblemaCinco.value = str.toString()
     }
 
 

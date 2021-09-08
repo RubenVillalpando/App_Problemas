@@ -2,11 +2,12 @@ package com.example.problemas.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.problemas.databinding.*
 import com.example.problemas.viewModel.ResolvedorVM
-import java.time.Year
 
 class MainActivity : AppCompatActivity() {
 
@@ -113,6 +114,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
     private fun registrarEventosUno() {
         bindingUno.btnFlechaRegreso.setOnClickListener{
             setContentView(vistaMain)
@@ -123,9 +125,27 @@ class MainActivity : AppCompatActivity() {
         bindingDos.btnFlechaRegreso.setOnClickListener{
             setContentView(vistaMain)
         }
+        bindingDos.etFechaInicio.setOnClickListener{
+            mostrarElegirFecha(bindingDos.etFechaInicio)
+        }
+        bindingDos.etFechaFin.setOnClickListener {
+            mostrarElegirFecha(bindingDos.etFechaFin)
+        }
 //        bindingDos.btnMostrarDomingos.setOnClickListener{
-//
+//            resolvedorVM.resolverProblema2(
+//                bindingDos.etFechaInicio.text.toString().toDate()
+//            )
 //        }
+    }
+
+    private fun mostrarElegirFecha(editText: EditText) {
+        val electorFecha = electorFechaFragment{ day, month, year ->
+            mostrarFecha(day, month, year, editText)}
+        electorFecha.show(supportFragmentManager, "electorFecha")
+    }
+
+    private fun mostrarFecha(day: Int, month: Int, year: Int, editText: EditText) {
+        editText.setText("$day/$month/$year")
     }
 
     private fun registrarEventosTres() {
@@ -188,7 +208,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun registrarObservadoresCinco() {
-        resolvedorVM.repeticionCaracteres.observe(this, {resultado->
+        resolvedorVM.respuestaProblemaCinco.observe(this, {resultado->
             bindingCinco.tvRespuestaProblema5.setText(resultado)
         })
     }

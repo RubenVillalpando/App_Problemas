@@ -46,7 +46,9 @@
             android:id="@+id/etFechaInicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="false"
             android:ems="10"
+            android:focusable="false"
             android:inputType="date"
             android:minHeight="48dp"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -67,7 +69,9 @@
             android:id="@+id/etFechaFin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="false"
             android:ems="10"
+            android:focusable="false"
             android:inputType="date"
             android:minHeight="48dp"
             tools:ignore="SpeakableTextPresentCheck" />
