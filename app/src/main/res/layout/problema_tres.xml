@@ -43,13 +43,14 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/etAñoInicio"
-            tools:ignore="SpeakableTextPresentCheck"
+            android:id="@+id/etAnioInicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="numberDecimal"
-            android:minHeight="48dp" />
+            android:inputType="number"
+            android:maxLength="4"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <View
             android:id="@+id/divider3"
@@ -64,13 +65,14 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/etAñoFin"
-            tools:ignore="SpeakableTextPresentCheck"
+            android:id="@+id/etAnioFin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="numberDecimal"
-            android:minHeight="48dp" />
+            android:inputType="number"
+            android:maxLength="4"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <View
             android:id="@+id/divider4"
@@ -78,7 +80,7 @@
             android:layout_height="32dp" />
 
         <Button
-            android:id="@+id/btnMostrarAñoBisiesto"
+            android:id="@+id/btnMostrarAnioBisiesto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

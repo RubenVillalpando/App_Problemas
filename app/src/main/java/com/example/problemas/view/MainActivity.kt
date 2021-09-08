@@ -1,5 +1,6 @@
 package com.example.problemas.view
 
+import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -8,6 +9,9 @@ import androidx.activity.viewModels
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.problemas.databinding.*
 import com.example.problemas.viewModel.ResolvedorVM
+import java.text.ParseException
+import java.time.LocalDate
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -119,6 +123,7 @@ class MainActivity : AppCompatActivity() {
         bindingUno.btnFlechaRegreso.setOnClickListener{
             setContentView(vistaMain)
         }
+
     }
 
     private fun registrarEventosDos() {
@@ -131,11 +136,24 @@ class MainActivity : AppCompatActivity() {
         bindingDos.etFechaFin.setOnClickListener {
             mostrarElegirFecha(bindingDos.etFechaFin)
         }
-//        bindingDos.btnMostrarDomingos.setOnClickListener{
-//            resolvedorVM.resolverProblema2(
-//                bindingDos.etFechaInicio.text.toString().toDate()
-//            )
-//        }
+        bindingDos.btnMostrarDomingos.setOnClickListener{
+            mostrarDomingos()
+        }
+    }
+
+    private fun mostrarDomingos() {
+        val format = SimpleDateFormat("dd/MM/yyyy")
+        try {
+            val fechaInicio: Date = format.parse(bindingDos.etFechaInicio.text.toString())
+            val fechaFin: Date = format.parse(bindingDos.etFechaFin.text.toString())
+            resolvedorVM.resolverProblema2(fechaInicio, fechaFin)
+        }catch(e: ParseException){
+            val mensaje: String = "Necesitas poner las 2 fechas"
+            Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show()
+        }catch (e: Exception){
+            val mensaje: String = "La fecha de inicio necesita ser menor que la final"
+            Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun mostrarElegirFecha(editText: EditText) {
@@ -145,12 +163,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun mostrarFecha(day: Int, month: Int, year: Int, editText: EditText) {
-        editText.setText("$day/$month/$year")
+        val correctMonth: Int = month + 1
+        editText.setText("$day/$correctMonth/$year")
     }
 
     private fun registrarEventosTres() {
         bindingTres.btnFlechaRegreso.setOnClickListener{
             setContentView(vistaMain)
+        }
+
+        bindingTres.btnMostrarAnioBisiesto.setOnClickListener {
+            mostrarAniosBisiestos()
+        }
+    }
+
+    private fun mostrarAniosBisiestos() {
+        try{
+            val anioInicio: Int = bindingTres.etAnioInicio.text.toString().toInt()
+            val anioFin: Int = bindingTres.etAnioFin.text.toString().toInt()
+            resolvedorVM.resolverProblema3(anioInicio, anioFin)
+        }catch(e: NumberFormatException){
+            val mensaje: String = "Debes llenar los 2 campos"
+            Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
+        }catch(e: Exception){
+            val mensaje: String = "El año de inicio debe ser menor al final"
+            Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
         }
     }
 

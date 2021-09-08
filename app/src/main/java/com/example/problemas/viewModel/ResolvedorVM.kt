@@ -1,9 +1,9 @@
 package com.example.problemas.viewModel
 
-import android.icu.util.Calendar
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.problemas.model.Resolvedor
+import java.lang.NullPointerException
 import java.time.Year
 import java.util.*
 import kotlin.collections.HashMap
@@ -27,12 +27,18 @@ class ResolvedorVM: ViewModel() {
     }
 
 
-    fun resolverProblema2(fechaInicio: Date, fechaFin: Date){
+    fun resolverProblema2(fechaInicio: Date, fechaFin: Date) =
+        if (fechaInicio > fechaFin){
+            throw(Exception())
+        }else{
+            resolvedor.resolverSegundoProblema(fechaInicio, fechaFin)
+        }
 
-    }
 
-
-    fun resolverProblema3(anioInicio: Year, anioFin: Year){
+    fun resolverProblema3(anioInicio: Int, anioFin: Int){
+        // Año bisiesto es el divisible entre 4, salvo que sea año
+        // secular -último de cada siglo, terminado en «00»-,
+        // en cuyo caso también ha de ser divisible entre 400.
 
     }
 

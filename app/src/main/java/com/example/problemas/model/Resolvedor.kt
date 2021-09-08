@@ -75,7 +75,7 @@ class Resolvedor {
                 repeticiones = hm.getValue(caracter)
                 hm.put(caracter, repeticiones + 1)
             } catch(e: Exception){
-                hm.put(caracter, 1)
+                if (caracter.isLetter()) hm.put(caracter, 1)
             }
         }
         return hm
