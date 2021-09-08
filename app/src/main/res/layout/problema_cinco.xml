@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/flechaRegresoUno"
+            android:id="@+id/btnFlechaRegreso"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:scaleType="fitCenter"
@@ -44,12 +44,12 @@
 
         <EditText
             android:id="@+id/etTextoEntrada"
-            tools:ignore="SpeakableTextPresentCheck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="numberDecimal"
-            android:minHeight="48dp" />
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <View
             android:id="@+id/divider4"
@@ -62,6 +62,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/mostrar_repetici_n_de_caracteres" />
+
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <TextView
+            android:id="@+id/tvRespuestaProblema5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

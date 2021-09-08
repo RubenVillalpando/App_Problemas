@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/flechaRegresoUno"
+            android:id="@+id/btnFlechaRegreso"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:scaleType="fitCenter"
@@ -83,6 +83,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/mostrar_domingos" />
+
+        <View
+            android:id="@+id/divider8"
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <TextView
+            android:id="@+id/tvProblema2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

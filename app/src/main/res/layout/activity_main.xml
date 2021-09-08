@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".view.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:weightSum="100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,99 +21,123 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Problemas"
+            android:layout_weight="9"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/problemas"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <View
-            android:id="@+id/divider15"
-            android:layout_width="match_parent"
+            android:id="@+id/divider5"
+            android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_weight="5.5" />
 
         <Button
             android:id="@+id/btnProblemaUno"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_weight="7"
             android:text="@string/problema_uno" />
 
         <View
-            android:id="@+id/divider5"
-            android:layout_width="wrap_content"
+            android:id="@+id/divider15"
+            android:layout_width="match_parent"
             android:layout_height="32dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_weight="5.5" />
 
         <Button
-            android:id="@+id/btnProblemaUno2"
+            android:id="@+id/btnProblemaDos"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_weight="7"
             android:text="@string/problema_dos" />
 
         <View
             android:id="@+id/divider10"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_weight="5.5" />
 
         <Button
-            android:id="@+id/btnProblemaUno3"
+            android:id="@+id/btnProblemaTres"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_weight="7"
             android:text="@string/problema_tres" />
 
         <View
             android:id="@+id/divider13"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_weight="5.5" />
 
         <Button
-            android:id="@+id/btnProblemaUno4"
+            android:id="@+id/btnProblemaCuatro"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_weight="7"
             android:text="@string/problema_cuatro" />
 
         <View
             android:id="@+id/divider12"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_weight="5.5" />
 
         <Button
-            android:id="@+id/btnProblemaUno5"
+            android:id="@+id/btnProblemaCinco"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_weight="7"
             android:text="@string/problema_cinco" />
 
         <View
             android:id="@+id/divider11"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_weight="5.5" />
 
         <Button
-            android:id="@+id/btnProblemaUno6"
+            android:id="@+id/btnProblemaSeis"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_weight="7"
             android:text="@string/problema_seis" />
 
         <View
             android:id="@+id/divider14"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_weight="5.5" />
 
         <Button
-            android:id="@+id/btnProblemaUno7"
+            android:id="@+id/btnProblemaSiete"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_weight="7"
             android:text="@string/problema_siete" />
+
+        <View
+            android:id="@+id/divider16"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_weight="5.5" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
