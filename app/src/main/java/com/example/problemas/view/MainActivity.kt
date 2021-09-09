@@ -3,14 +3,13 @@ package com.example.problemas.view
 import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.viewModels
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.problemas.databinding.*
 import com.example.problemas.viewModel.ResolvedorVM
+import java.text.NumberFormat
 import java.text.ParseException
-import java.time.LocalDate
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -123,6 +122,20 @@ class MainActivity : AppCompatActivity() {
         bindingUno.btnFlechaRegreso.setOnClickListener{
             setContentView(vistaMain)
         }
+        bindingUno.btnMostrarClima.setOnClickListener {
+            mostrarClima()
+        }
+
+    }
+
+    private fun mostrarClima() {
+            try{
+                val lat = bindingUno.etLatitud.text.toString().toDouble()
+                val lon = bindingUno.etLongitud.text.toString().toDouble()
+                resolvedorVM.resolverProblema1(lat, lon)
+            } catch (e: NumberFormatException){
+                val mensaje = "Los 2 campos deben estar llenos"
+            }
 
     }
 
@@ -149,10 +162,10 @@ class MainActivity : AppCompatActivity() {
             resolvedorVM.resolverProblema2(fechaInicio, fechaFin)
         }catch(e: ParseException){
             val mensaje: String = "Necesitas poner las 2 fechas"
-            Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show()
+            mostrarToast(mensaje)
         }catch (e: Exception){
             val mensaje: String = "La fecha de inicio necesita ser menor que la final"
-            Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show()
+            mostrarToast(mensaje)
         }
     }
 
@@ -184,16 +197,38 @@ class MainActivity : AppCompatActivity() {
             resolvedorVM.resolverProblema3(anioInicio, anioFin)
         }catch(e: NumberFormatException){
             val mensaje: String = "Debes llenar los 2 campos"
-            Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
+            mostrarToast(mensaje)
         }catch(e: Exception){
             val mensaje: String = "El año de inicio debe ser menor al final"
-            Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
+            mostrarToast(mensaje)
         }
     }
 
     private fun registrarEventosCuatro() {
         bindingCuatro.btnFlechaRegreso.setOnClickListener{
             setContentView(vistaMain)
+        }
+        bindingCuatro.btnMostrarNumero.setOnClickListener {
+            mostrarNumero()
+        }
+    }
+
+    private fun mostrarNumero() {
+        try{
+            val tamanioMatriz = bindingCuatro.etTamaOMatriz.text.toString().toInt()
+            val rotaciones = bindingCuatro.etRotaciones.text.toString().split(",")
+            val listaRotaciones = rotaciones.map{it.toInt()}
+            val coordenadas = Pair<Int, Int>(
+                bindingCuatro.etCoordenadaX.text.toString().toInt(),
+                bindingCuatro.etCoordenadaY.text.toString().toInt()
+            )
+            resolvedorVM.resolverProblema4(tamanioMatriz, listaRotaciones, coordenadas)
+        } catch (e: NumberFormatException){
+            val mensaje = "Todos los campos deben estar llenos con valores válidos"
+            mostrarToast(mensaje)
+        } catch (e: Exception){
+            val mensaje = "las coordenadas deben ser menores al tamaño de la matriz"
+            mostrarToast(mensaje)
         }
     }
 
@@ -202,7 +237,16 @@ class MainActivity : AppCompatActivity() {
             setContentView(vistaMain)
         }
         bindingCinco.btnMostrarCaracteres.setOnClickListener{
+            mostrarCaracteres()
+        }
+    }
+
+    private fun mostrarCaracteres() {
+        try {
             resolvedorVM.resolverProblema5(bindingCinco.etTextoEntrada.text.toString())
+        }catch (e: NullPointerException){
+            val mensaje = "Debes de llenar el campo correspondiente"
+            mostrarToast(mensaje)
         }
     }
 
@@ -210,22 +254,54 @@ class MainActivity : AppCompatActivity() {
         bindingSeis.btnFlechaRegreso.setOnClickListener{
             setContentView(vistaMain)
         }
+        bindingSeis.btnMostrarArbol.setOnClickListener {
+            mostrarArbol()
+        }
+    }
+
+    private fun mostrarArbol() {
+        try {
+            resolvedorVM.resolverProblema6(
+                bindingSeis.etRuta.text.toString()
+            )
+        } catch (e: Exception){
+            val mensaje = "Debe llenar el campo con una ruta a un archivo"
+        }
     }
 
     private fun registrarEventosSiete() {
         bindingSiete.btnFlechaRegreso.setOnClickListener{
             setContentView(vistaMain)
         }
+        bindingSiete.btnMostrarCaminos.setOnClickListener {
+           mostrarCaminos()
+        }
     }
+
+    private fun mostrarCaminos() {
+        try {
+            resolvedorVM.resolverProblema7(
+                bindingSiete.etTamanioMatrizEntrada.text.toString().toInt()
+            )
+        } catch(e: NumberFormatException){
+            val mensaje = "Debes llenar el campo con un número"
+            mostrarToast(mensaje)
+        } catch(e: Exception){
+            val mensaje = "El resultado es más grande de lo que puede calcular el sistema"
+            mostrarToast(mensaje)
+        }
+    }
+
+
 
     private fun registrarObservadores() {
 //        registrarObservadoresUno()
-//        registrarObservadoresDos()
-//        registrarObservadoresTres()
-//        registrarObservadoresCuatro()
+        registrarObservadoresDos()
+        registrarObservadoresTres()
+        registrarObservadoresCuatro()
         registrarObservadoresCinco()
-//        registrarObservadoresSeis()
-//        registrarObservadoresSiete()
+        registrarObservadoresSeis()
+        registrarObservadoresSiete()
     }
 
     private fun registrarObservadoresUno() {
@@ -233,29 +309,45 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun registrarObservadoresDos() {
-        TODO("Not yet implemented")
+        resolvedorVM.respuestaProblemaDos.observe(this, {resultado->
+            bindingDos.tvResultado2.setText("Hay $resultado meses donde domingo es el último día")
+        })
     }
 
     private fun registrarObservadoresTres() {
-        TODO("Not yet implemented")
+        resolvedorVM.respuestaProblemaTres.observe(this, {resultado->
+            bindingTres.tvResultado3.setText(resultado)
+        })
     }
 
     private fun registrarObservadoresCuatro() {
-        TODO("Not yet implemented")
+        resolvedorVM.respuestaProblemaCuatro.observe(this, {resultado->
+            bindingCuatro.tvResultado4.setText("Número en el índice = $resultado")
+        })
     }
 
     private fun registrarObservadoresCinco() {
         resolvedorVM.respuestaProblemaCinco.observe(this, {resultado->
-            bindingCinco.tvRespuestaProblema5.setText(resultado)
+            bindingCinco.tvResultado5.setText(resultado)
         })
     }
 
     private fun registrarObservadoresSeis() {
-        TODO("Not yet implemented")
+        resolvedorVM.respuestaProblemaSeis.observe(this, {resultado->
+            val listAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resultado)
+            bindingSeis.lvArbolArchivos.adapter = listAdapter
+        })
     }
 
     private fun registrarObservadoresSiete() {
-        TODO("Not yet implemented")
+        resolvedorVM.respuestaProblemaSiete.observe(this, {resultado->
+            val resString = NumberFormat.getIntegerInstance().format(resultado)
+            bindingSiete.tvRespuesta7.setText("Caminos posibles = $resString")
+        })
+    }
+
+    private fun mostrarToast(mensaje: String){
+        Toast.makeText(this, mensaje, Toast.LENGTH_LONG ).show()
     }
 
 }

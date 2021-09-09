@@ -3,10 +3,8 @@ package com.example.problemas.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.problemas.model.Resolvedor
-import java.lang.NullPointerException
-import java.time.Year
 import java.util.*
-import kotlin.collections.HashMap
+import kotlin.NullPointerException
 
 class ResolvedorVM: ViewModel() {
 
@@ -17,66 +15,73 @@ class ResolvedorVM: ViewModel() {
     var respuestaProblemaTres = MutableLiveData<String>("")
     var respuestaProblemaCuatro = MutableLiveData<Int>(0)
     var respuestaProblemaCinco = MutableLiveData<String>("")
-    var respuestaProblemaSeis = MutableLiveData<String>("")
-    var respuestaProblemaSiete = MutableLiveData<Int>(0)
+    var respuestaProblemaSeis = MutableLiveData<ArrayList<String>>()
+    var respuestaProblemaSiete = MutableLiveData<Long>(0)
 
 
-
-    fun resolverProblema1(latitud: Double?, longitud: Double?){
-
+    fun resolverProblema1(latitud: Double?, longitud: Double?) {
+        if(latitud == null || longitud == null)throw(NullPointerException())
+        respuestaProblemaUno.value = resolvedor.resolverPrimerProblema(latitud, longitud)
     }
 
 
-    fun resolverProblema2(fechaInicio: Date, fechaFin: Date) =
-        if (fechaInicio > fechaFin){
-            throw(Exception())
-        }else{
-            resolvedor.resolverSegundoProblema(fechaInicio, fechaFin)
-        }
+    fun resolverProblema2(fechaInicio: Date, fechaFin: Date){
+
+        if (fechaInicio.after(fechaFin)) throw(Exception())
+
+        respuestaProblemaDos.value = resolvedor.resolverSegundoProblema(fechaInicio, fechaFin)
+    }
+
 
 
     fun resolverProblema3(anioInicio: Int, anioFin: Int){
-        // Año bisiesto es el divisible entre 4, salvo que sea año
-        // secular -último de cada siglo, terminado en «00»-,
-        // en cuyo caso también ha de ser divisible entre 400.
 
+        if (anioInicio> anioFin) throw(Exception())
+
+        respuestaProblemaTres.value = resolvedor.resolverTercerProblema(anioInicio, anioFin)
     }
 
 
-    fun resolverProblema4(tamanioMatriz: Int, rotaciones: IntArray, coordenada: Pair<Int, Int>){
+    fun resolverProblema4(tamanioMatriz: Int, rotaciones: List<Int>, coordenada: Pair<Int, Int>){
+        if(coordenada.first > tamanioMatriz || coordenada.second > tamanioMatriz) throw(Exception())
         val r: Int = resolvedor.resolverCuartoProblema(tamanioMatriz, rotaciones, coordenada)
         respuestaProblemaCuatro.value = r
     }
 
 
     fun resolverProblema5(texto: String){
+        if (texto.isEmpty()) throw(NullPointerException())
+        val strRespuesta = formatHM(resolvedor.resolverQuintoProblema(texto))
+        respuestaProblemaCinco.value = strRespuesta
+    }
 
-        val hm: HashMap<Char, Int> = resolvedor.resolverQuintoProblema(texto)
-
-        val str = StringBuilder()
+    private fun formatHM(hm: HashMap<Char, Int>): String {
+        val strBuilder = StringBuilder()
 
         val keysArr: CharArray = hm.keys.toCharArray()
-        str.append(keysArr[0])
+        strBuilder.append(keysArr[0])
             .append(" = ")
             .append(hm.getValue(keysArr[0]))
 
         for (i in 1 until keysArr.size){
-            str.append(", ")
+            strBuilder.append(", ")
                 .append(keysArr[i])
                 .append(" = ")
                 .append(hm.getValue(keysArr[i]))
         }
-        respuestaProblemaCinco.value = str.toString()
+        return strBuilder.toString()
     }
 
 
     fun resolverProblema6(ruta: String){
-
+        if (ruta.isEmpty()) throw(Exception())
+        respuestaProblemaSeis.value = resolvedor.resolverSextoProblema(ruta)
     }
 
 
     fun resolverProblema7(tamanioGrid: Int){
-
+        if (tamanioGrid > 33) throw(Exception())
+        respuestaProblemaSiete.value = resolvedor.resolverSeptimoProblema(tamanioGrid)
     }
 
 }

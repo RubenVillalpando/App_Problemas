@@ -6,6 +6,7 @@ plugins {
 android {
     compileSdk 30
 
+
     defaultConfig {
         applicationId "com.example.problemas"
         minSdk 26
@@ -32,6 +33,9 @@ android {
 
     viewBinding{
         enabled = true
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 }
 

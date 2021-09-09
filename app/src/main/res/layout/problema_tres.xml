@@ -92,7 +92,7 @@
             android:layout_height="32dp" />
 
         <TextView
-            android:id="@+id/tvRespuesta3"
+            android:id="@+id/tvResultado3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

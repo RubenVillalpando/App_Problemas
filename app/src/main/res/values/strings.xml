@@ -26,4 +26,7 @@
     <string name="problema_siete">Problema Siete</string>
     <string name="mostrar_caminos">Mostrar Caminos</string>
     <string name="problemas">Problemas</string>
+    <string name="instruccion_rotaciones">Números enteros separados por comas (Ej. 3,-4,9,0,-1)</string>
+    <string name="X_igual">X =</string>
+    <string name="Y_igual">Y =</string>
 </resources>

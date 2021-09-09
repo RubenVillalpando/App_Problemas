@@ -43,7 +43,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/etTamañoMatrizEntrada"
+            android:id="@+id/etTamanioMatrizEntrada"
             tools:ignore="SpeakableTextPresentCheck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,6 +62,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/mostrar_caminos" />
+
+        <View
+            android:id="@+id/divider17"
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <TextView
+            android:id="@+id/tvRespuesta7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
