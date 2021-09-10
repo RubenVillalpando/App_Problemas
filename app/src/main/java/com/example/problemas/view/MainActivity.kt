@@ -132,9 +132,16 @@ class MainActivity : AppCompatActivity() {
             try{
                 val lat = bindingUno.etLatitud.text.toString().toDouble()
                 val lon = bindingUno.etLongitud.text.toString().toDouble()
-                resolvedorVM.resolverProblema1(lat, lon)
-            } catch (e: NumberFormatException){
+                resolvedorVM.resolverProblema1(lat, lon, this)
+            } catch (e: NumberFormatException) {
                 val mensaje = "Los 2 campos deben estar llenos"
+                mostrarToast(mensaje)
+            }catch (e: IllegalArgumentException){
+                val mensaje = "Los datos deben estar en los rangos especificados"
+                mostrarToast(mensaje)
+            } catch (e: Exception){
+                val mensaje = "No se pudieron obtener los datos del servidor, inténtelo más tarde"
+                mostrarToast(mensaje)
             }
 
     }
@@ -266,6 +273,7 @@ class MainActivity : AppCompatActivity() {
             )
         } catch (e: Exception){
             val mensaje = "Debe llenar el campo con una ruta a un archivo"
+            mostrarToast(mensaje)
         }
     }
 
@@ -295,7 +303,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun registrarObservadores() {
-//        registrarObservadoresUno()
+        registrarObservadoresUno()
         registrarObservadoresDos()
         registrarObservadoresTres()
         registrarObservadoresCuatro()
@@ -305,7 +313,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun registrarObservadoresUno() {
-        TODO("Not yet implemented")
+        resolvedorVM.respuestaProblemaUno.observe(this, {resultado->
+            val listAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resultado)
+            bindingUno.lvClimaPorHora.adapter = listAdapter
+        })
     }
 
     private fun registrarObservadoresDos() {

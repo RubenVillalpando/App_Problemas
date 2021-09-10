@@ -2,7 +2,9 @@ package com.example.problemas.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.problemas.model.Hourly
 import com.example.problemas.model.Resolvedor
+import com.example.problemas.view.MainActivity
 import java.util.*
 import kotlin.NullPointerException
 
@@ -10,7 +12,7 @@ class ResolvedorVM: ViewModel() {
 
     private val resolvedor = Resolvedor()
 
-    var respuestaProblemaUno = MutableLiveData<String>("")
+    var respuestaProblemaUno = MutableLiveData<ArrayList<String>>()
     var respuestaProblemaDos = MutableLiveData<Int>(0)
     var respuestaProblemaTres = MutableLiveData<String>("")
     var respuestaProblemaCuatro = MutableLiveData<Int>(0)
@@ -19,10 +21,17 @@ class ResolvedorVM: ViewModel() {
     var respuestaProblemaSiete = MutableLiveData<Long>(0)
 
 
-    fun resolverProblema1(latitud: Double?, longitud: Double?) {
-        if(latitud == null || longitud == null)throw(NullPointerException())
-        respuestaProblemaUno.value = resolvedor.resolverPrimerProblema(latitud, longitud)
+    fun resolverProblema1(latitud: Double, longitud: Double, mainAct: MainActivity) {
+        if(latitud < -90.0 || latitud > 90.0  || longitud < -180.0 || longitud > 180.0)throw(IllegalArgumentException())
+        try {
+            respuestaProblemaUno.value = resolvedor.resolverPrimerProblema(latitud, longitud, mainAct)
+        } catch(e: Exception){
+            throw(e)
+        }
     }
+
+
+
 
 
     fun resolverProblema2(fechaInicio: Date, fechaFin: Date){

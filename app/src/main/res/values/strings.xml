@@ -29,4 +29,6 @@
     <string name="instruccion_rotaciones">Números enteros separados por comas (Ej. 3,-4,9,0,-1)</string>
     <string name="X_igual">X =</string>
     <string name="Y_igual">Y =</string>
+    <string name="_90_90">[-90°...90°]</string>
+    <string name="_180_180">[-180°...180°]</string>
 </resources>

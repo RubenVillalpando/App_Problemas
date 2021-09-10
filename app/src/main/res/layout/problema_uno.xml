@@ -47,7 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="numberDecimal"
+            android:hint="@string/_90_90"
+            android:inputType="numberSigned|numberDecimal"
             android:minHeight="48dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -68,7 +69,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="numberDecimal"
+            android:hint="@string/_180_180"
+            android:inputType="numberSigned|numberDecimal"
             android:minHeight="48dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -83,6 +85,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/mostrar_clima" />
+
+        <ListView
+            android:id="@+id/lvClimaPorHora"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="horizontal|vertical" />
 
     </LinearLayout>
 

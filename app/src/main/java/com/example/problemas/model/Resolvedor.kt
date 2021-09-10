@@ -1,8 +1,12 @@
 package com.example.problemas.model
 
 import android.icu.util.Calendar
-import org.json.JSONObject
+import android.os.AsyncTask
+import android.widget.Toast
+import com.example.problemas.view.MainActivity
+import com.google.gson.Gson
 import java.io.File
+import java.net.URL
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
@@ -10,23 +14,80 @@ import kotlin.math.roundToLong
 
 class Resolvedor {
 
+    lateinit var main: MainActivity
 
+    var lat: Double = 0.0
+    var lon: Double = 0.0
+    var datosClima: String? = ""
 
-    fun resolverPrimerProblema(latitud: Double, longitud: Double): String{
-        val cc = ConexionClima()
-        val datosStr : String? = cc.conseguirRespuestaDeAPI(latitud, longitud)
-        if (datosStr != null) {
-            val datos = JSONObject(datosStr)
-            val datosPorHora = datos.get("hourly")
+    fun resolverPrimerProblema(latitud: Double, longitud: Double, mainActivity: MainActivity): ArrayList<String>{
+        lat = latitud
+        lon = longitud
+        main = mainActivity
+        val datosHora : List<Hourly>
+        try {
+            ConexionClima().execute()
+            val json = datosClima
+            val modelo = Gson().fromJson(json, Modelo::class.java)
+            datosHora = modelo.hourly
+        } catch(e: Exception){
+            throw(e)
         }
 
-//        println(datosPorHora)
 
-        return("")
+        return darFormato(datosHora.subList(0,6))
+    }
+
+    private fun darFormato(datosHora: List<Hourly>): ArrayList<String> {
+        val listaClima = ArrayList<String>()
+
+        // Formato de hora
+        val sdf = java.text.SimpleDateFormat("hh:mm")
+        var fecha : Date
+        var strBuilder = StringBuilder()
+
+
+        for(dato in datosHora){
+            fecha = Date(dato.dt.toLong()*1000)
+            strBuilder.append(sdf.format(fecha).toString())
+                .append(": ")
+                .append(dato.temp.toString())
+                .append(" C°---")
+                .append(dato.weather.get(0).description)
+
+            listaClima.add(strBuilder.toString())
+
+            strBuilder.clear()
+        }
+        return listaClima
+    }
+
+    inner class ConexionClima: AsyncTask<String, Void, String>() {
+
+        override fun onPreExecute() {
+            Toast.makeText(main, "Cargando datos...", Toast.LENGTH_LONG).show()
+        }
+
+        override fun doInBackground(vararg params: String?): String? {
+            val apiKey = "99ccac116e6924f62f669458a754299c"
+            var respuesta: String?
+
+            val urlStr = "https://api.openweathermap.org/data/2.5/onecall?" +
+                    "lat=$lat&lon=$lon&exclude=current,daily,alerts,minutely" +
+                    "&units=metric&lang=es&appid=$apiKey"
+
+            try{
+                respuesta = URL(urlStr).readText(Charsets.UTF_8)
+            } catch (e: Exception) {
+                respuesta = null
+            }
+            datosClima = respuesta
+            return respuesta
+        }
     }
 
 
-fun resolverSegundoProblema(fechaInicio: Date, fechaFin: Date): Int{
+    fun resolverSegundoProblema(fechaInicio: Date, fechaFin: Date): Int{
         val varCal = Calendar.getInstance()
         val cFin = Calendar.getInstance()
         var mesesDomingo: Int = 0
